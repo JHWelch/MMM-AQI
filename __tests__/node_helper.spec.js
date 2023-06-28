@@ -31,6 +31,18 @@ describe('node_helper', () => {
           { headers: { Accept: 'application/json' } },
         );
       });
+
+      it('sends the data to the client', async () => {
+        await helper.socketNotificationReceived('MMM-AQI-FETCH', {
+          city: 'chicago',
+          token: 'mock-token',
+        });
+
+        expect(helper.sendSocketNotification)
+          .toHaveBeenCalledWith('MMM-AQI-DATA', {
+            aqi: 179,
+          });
+      });
     });
 
     describe('missing city', () => {
