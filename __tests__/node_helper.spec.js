@@ -224,19 +224,25 @@ describe('node_helper', () => {
     helper = require('../node_helper');
 
     helper.setName('MMM-AQI');
-
-    global.fetch = jest.fn(() => Promise.resolve(mockResponse()));
   });
 
-  test('', () => {
-    helper.socketNotificationReceived('MMM-AQI-FETCH', {
-      city: 'chicago',
-      token: 'mock-token',
-    });
+  describe('socketNotificationReceived', () => {
+    describe('passed proper config', () => {
+      beforeEach(() => {
+        global.fetch = jest.fn(() => Promise.resolve(mockResponse()));
+      });
 
-    expect(fetch).toHaveBeenCalledWith(
-      'https://api.waqi.info/feed/chicago/?token=mock-token',
-      { headers: { Accept: 'application/json' } },
-    );
+      test('it fetches the aqi for the city', () => {
+        helper.socketNotificationReceived('MMM-AQI-FETCH', {
+          city: 'chicago',
+          token: 'mock-token',
+        });
+
+        expect(fetch).toHaveBeenCalledWith(
+          'https://api.waqi.info/feed/chicago/?token=mock-token',
+          { headers: { Accept: 'application/json' } },
+        );
+      });
+    });
   });
 });
