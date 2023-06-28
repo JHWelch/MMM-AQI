@@ -34,10 +34,10 @@ var config = {
 
 ## Configuration options
 
-| Option  | Description                                                               |
-| ------- | ------------------------------------------------------------------------- |
-| `token` | *Required* URL to api, should end without slash. *http://example.com/api* |
-| `city`  | *Required* The city for which to display the information                  |
+| Option  | Description                                                                      |
+| ------- | -------------------------------------------------------------------------------- |
+| `token` | **Required** [Free token from AQICN.org](https://aqicn.org/data-platform/token/) |
+| `city`  | **Required** The city for which to display the information                       |
 <!-- | `updateInterval` | *Optional* Refresh time in milliseconds <br>Default 60000 milliseconds (1 minute) | -->
 
 ## Testing
