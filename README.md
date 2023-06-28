@@ -1,4 +1,7 @@
-# MMM-AQI
+# WIP: MMM-AQI
+
+> **Warning**
+> This module is in active development, it is not yet functional.
 
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
 
