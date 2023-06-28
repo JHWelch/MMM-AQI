@@ -56,5 +56,18 @@ describe('node_helper', () => {
         );
       });
     });
+
+    describe('missing city and token', () => {
+      it('outputs both errors', () => {
+        helper.socketNotificationReceived('MMM-AQI-FETCH', {});
+
+        expect(global.Log.error).toHaveBeenCalledWith(
+          'MMM-AQI: Missing city in config',
+        );
+        expect(global.Log.error).toHaveBeenCalledWith(
+          'MMM-AQI: Missing token in config',
+        );
+      });
+    });
   });
 });

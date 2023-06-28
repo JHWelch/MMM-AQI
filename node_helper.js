@@ -13,17 +13,11 @@ module.exports = NodeHelper.create({
     if (notification !== 'MMM-AQI-FETCH') {
       return;
     }
+    if (!this.validate(payload)) {
+      return;
+    }
 
     const { token, city } = payload;
-
-    if (!city) {
-      global.Log.error('MMM-AQI: Missing city in config');
-      return;
-    }
-    if (!token) {
-      global.Log.error('MMM-AQI: Missing token in config');
-      return;
-    }
 
     const data = global.fetch(`https://api.waqi.info/feed/${city}/?token=${token}`, this.requestInit());
   },
@@ -32,5 +26,19 @@ module.exports = NodeHelper.create({
     return {
       headers: { Accept: 'application/json' },
     };
+  },
+
+  validate(payload) {
+    let valid = true;
+    if (!payload.city) {
+      global.Log.error('MMM-AQI: Missing city in config');
+      valid = false;
+    }
+    if (!payload.token) {
+      global.Log.error('MMM-AQI: Missing token in config');
+      valid = false;
+    }
+
+    return valid;
   },
 });
