@@ -4,7 +4,9 @@
   "description": "Magic Mirror Module for display the Air Quality Index (AQI)",
   "main": "MMM-AQI.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "lint": "eslint .",
+    "fix": "eslint . --fix"
   },
   "author": "Jordan Welch",
   "license": "MIT",
