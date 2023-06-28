@@ -60,6 +60,12 @@ Module.register('MMM-AQI', {
   },
 
   socketNotificationReceived(notification, payload) {
+    if (notification !== 'MMM-AQI-DATA') {
+      return;
+    }
 
+    this.data.aqi = payload.aqi;
+    this.loading = false;
+    this.updateDom(300);
   },
 });

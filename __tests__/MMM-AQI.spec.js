@@ -73,15 +73,39 @@ describe('MMM-AQI', () => {
       MMMAQI.setConfig({ updateInterval: 100000 });
       MMMAQI.start();
 
-      expect(global.setInterval).toHaveBeenNthCalledWith(
-        1,
-        expect.any(Function),
-        100000,
-      );
+      expect(global.setInterval)
+        .toHaveBeenCalledWith(expect.any(Function), 100000);
     });
   });
 
   describe('socketNotificationReceived', () => {
+    const payload = { aqi: 179 };
+    describe('notification is MMM-AQI-DATA', () => {
+      it('sets AQI', () => {
+        MMMAQI.socketNotificationReceived('MMM-AQI-DATA', payload);
 
+        expect(MMMAQI.data.aqi).toBe(payload.aqi);
+      });
+
+      it('sets loading to false', () => {
+        MMMAQI.socketNotificationReceived('MMM-AQI-DATA', payload);
+
+        expect(MMMAQI.loading).toBe(false);
+      });
+
+      it('updates dom', () => {
+        MMMAQI.socketNotificationReceived('MMM-AQI-DATA', payload);
+
+        expect(MMMAQI.updateDom).toHaveBeenCalled();
+      });
+    });
+
+    describe('notification is not MMM-AQI-DATA', () => {
+      it('does not set data', () => {
+        MMMAQI.socketNotificationReceived('NOT-MMM-AQI-DATA', payload);
+
+        expect(MMMAQI.data.aqi).toEqual(undefined);
+      });
+    });
   });
 });
