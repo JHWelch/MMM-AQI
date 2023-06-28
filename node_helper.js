@@ -16,6 +16,21 @@ module.exports = NodeHelper.create({
 
     const { token, city } = payload;
 
-    const data = global.fetch(`https://api.waqi.info/feed/${city}/?token=${token}`, { headers: { Accept: 'application/json' } });
+    if (!city) {
+      global.Log.error('MMM-AQI: Missing city in config');
+      return;
+    }
+    if (!token) {
+      global.Log.error('MMM-AQI: Missing token in config');
+      return;
+    }
+
+    const data = global.fetch(`https://api.waqi.info/feed/${city}/?token=${token}`, this.requestInit());
+  },
+
+  requestInit() {
+    return {
+      headers: { Accept: 'application/json' },
+    };
   },
 });
