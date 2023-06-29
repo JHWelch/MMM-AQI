@@ -7,6 +7,7 @@ describe('MMM-AQI.njk', () => {
     const payload = {
       loading: false,
       aqi: 179,
+      levelClass: 'aqi-label--unhealthy',
     };
 
     it('shows the title', () => {
@@ -14,10 +15,17 @@ describe('MMM-AQI.njk', () => {
 
       expect(template).toContain('AQI');
     });
+
     it('shows the AQI', () => {
       const template = nunjucks.render('MMM-AQI.njk', payload);
 
       expect(template).toContain('179');
+    });
+
+    it('appends levelClass to label', () => {
+      const template = nunjucks.render('MMM-AQI.njk', payload);
+
+      expect(template).toContain('aqi-label aqi-label--unhealthy');
     });
   });
 
