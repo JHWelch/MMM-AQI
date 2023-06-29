@@ -78,6 +78,13 @@ describe('MMM-AQI', () => {
     });
   });
 
+  describe('getTemplate', () => {
+    it('returns template path', () => {
+      expect(MMMAQI.getTemplate()).toBe('templates/MMM-AQI.njk');
+    });
+  });
+
+
   describe('socketNotificationReceived', () => {
     const payload = { aqi: 179 };
     describe('notification is MMM-AQI-DATA', () => {
