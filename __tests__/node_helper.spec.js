@@ -19,7 +19,9 @@ describe('node_helper', () => {
   describe('socketNotificationReceived', () => {
     describe('passed proper config', () => {
       beforeEach(() => {
-        global.fetch = jest.fn(() => Promise.resolve(mockResponse()));
+        fetchMock.mockResponseOnce(mockResponse(), {
+          status: 200,
+        });
       });
 
       it('fetches the aqi for the city', () => {

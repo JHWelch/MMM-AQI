@@ -5,6 +5,7 @@
  * MIT Licensed.
  */
 
+const fetch = require('node-fetch');
 const Log = require('logger'); // eslint-disable-line import/no-unresolved
 const NodeHelper = require('node_helper'); // eslint-disable-line import/no-unresolved
 
