@@ -42,7 +42,28 @@ Module.register('MMM-AQI', {
     return {
       aqi: this.data.aqi,
       loading: this.loading,
+      levelClass: this.getLevelClass(),
     };
+  },
+
+  getLevelClass() {
+    if (this.data.aqi <= 50) {
+      return 'aqi-label--good';
+    }
+    if (this.data.aqi <= 100) {
+      return 'aqi-label--moderate';
+    }
+    if (this.data.aqi <= 150) {
+      return 'aqi-label--sensitive';
+    }
+    if (this.data.aqi <= 200) {
+      return 'aqi-label--unhealthy';
+    }
+    if (this.data.aqi <= 300) {
+      return 'aqi-label--very-unhealthy';
+    }
+
+    return 'aqi-label--hazardous';
   },
 
   getScripts() {

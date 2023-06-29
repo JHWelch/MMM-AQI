@@ -87,9 +87,49 @@ describe('MMM-AQI', () => {
   describe('getTemplateData', () => {
     it('returns information needed by template', () => {
       MMMAQI.data.aqi = 179;
+
       expect(MMMAQI.getTemplateData()).toEqual({
         aqi: 179,
         loading: MMMAQI.loading,
+        levelClass: MMMAQI.getLevelClass(),
+      });
+    });
+
+    describe('levelClass', () => {
+      it('returns aqi-label--good when aqi is less than 51', () => {
+        MMMAQI.data.aqi = 49;
+
+        expect(MMMAQI.getTemplateData().levelClass).toBe('aqi-label--good');
+      });
+
+      it('returns aqi-label--moderate when aqi is between 51 and 100', () => {
+        MMMAQI.data.aqi = 51;
+
+        expect(MMMAQI.getTemplateData().levelClass).toBe('aqi-label--moderate');
+      });
+
+      it('returns aqi-label--sensitive when aqi is between 101 and 150', () => {
+        MMMAQI.data.aqi = 101;
+
+        expect(MMMAQI.getTemplateData().levelClass).toBe('aqi-label--sensitive');
+      });
+
+      it('returns aqi-label--unhealthy when aqi is between 151 and 200', () => {
+        MMMAQI.data.aqi = 151;
+
+        expect(MMMAQI.getTemplateData().levelClass).toBe('aqi-label--unhealthy');
+      });
+
+      it('returns aqi-label--very-unhealthy when aqi is between 201 and 300', () => {
+        MMMAQI.data.aqi = 201;
+
+        expect(MMMAQI.getTemplateData().levelClass).toBe('aqi-label--very-unhealthy');
+      });
+
+      it('returns aqi-label--hazardous when aqi is greater than 300', () => {
+        MMMAQI.data.aqi = 301;
+
+        expect(MMMAQI.getTemplateData().levelClass).toBe('aqi-label--hazardous');
       });
     });
   });
