@@ -5,8 +5,8 @@
  * MIT Licensed.
  */
 
-// eslint-disable-next-line import/no-unresolved
-const NodeHelper = require('node_helper');
+const Log = require('logger'); // eslint-disable-line import/no-unresolved
+const NodeHelper = require('node_helper'); // eslint-disable-line import/no-unresolved
 
 module.exports = NodeHelper.create({
   socketNotificationReceived(notification, payload) {
@@ -28,7 +28,7 @@ module.exports = NodeHelper.create({
       this.requestInit(),
     );
 
-    const { aqi } = JSON.parse(response).data;
+    const { aqi } = (await response.json()).data;
 
     this.sendSocketNotification('MMM-AQI-DATA', {
       aqi,
@@ -44,11 +44,11 @@ module.exports = NodeHelper.create({
   validate(payload) {
     let valid = true;
     if (!payload.city) {
-      global.Log.error('MMM-AQI: Missing city in config');
+      Log.error('MMM-AQI: Missing city in config');
       valid = false;
     }
     if (!payload.token) {
-      global.Log.error('MMM-AQI: Missing token in config');
+      Log.error('MMM-AQI: Missing token in config');
       valid = false;
     }
 
