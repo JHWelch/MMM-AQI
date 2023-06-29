@@ -2,7 +2,7 @@
 const mockResponse = require('../__mocks__/mockResponse');
 
 beforeAll(() => {
-  require('../__mocks__/requireLogger');
+  require('../__mocks__/logger');
 });
 
 describe('node_helper', () => {
@@ -11,7 +11,7 @@ describe('node_helper', () => {
 
   beforeEach(() => {
     helper = require('../node_helper');
-    Log = require('logger');
+    Log = require('logger'); // eslint-disable-line import/no-unresolved
 
     helper.setName('MMM-AQI');
   });
