@@ -1,13 +1,35 @@
 const nunjucks = require('nunjucks');
 
-describe('MMM-AQI.njk', () => {
-  it('renders the template', () => {
-    nunjucks.configure(['templates']);
-    const payload = {
-      aqi: 179,
-    };
-    const template = nunjucks.render('MMM-AQI.njk', payload);
+translate = (str) => str;
 
-    expect(template).toContain('179');
+describe('MMM-AQI.njk', () => {
+  describe('content loaded', () => {
+    it('shows the AQI', () => {
+      nunjucks.configure(['templates']);
+
+      const payload = {
+        loading: false,
+        aqi: 179,
+      };
+      const template = nunjucks.render('MMM-AQI.njk', payload);
+
+      expect(template).toContain('179');
+    });
+  });
+
+  describe('loading', () => {
+    it('shows loading', () => {
+      const nunjucksEnvironment = nunjucks.configure(['templates']);
+      nunjucksEnvironment.addFilter(
+        'translate',
+        (str, variables) => nunjucks.runtime.markSafe(translate(str, variables)),
+      );
+      const payload = {
+        loading: true,
+      };
+      const template = nunjucks.render('MMM-AQI.njk', payload);
+
+      expect(template).toContain('LOADING');
+    });
   });
 });
