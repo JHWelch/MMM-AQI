@@ -2,7 +2,7 @@
 describe('MMM-AQI', () => {
   beforeAll(() => {
     require('../__mocks__/Module');
-    require('../__mocks__/Logger');
+    require('../__mocks__/globalLogger');
   });
 
   const name = 'MMM-AQI';

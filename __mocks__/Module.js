@@ -1,9 +1,11 @@
 /* eslint-disable no-param-reassign */
 global.Module = {
   definitions: {},
+
   create(name) {
     return this.definitions[name];
   },
+
   register(name, overrides) {
     const base = {
       requiresVersion: '2.0.0',
