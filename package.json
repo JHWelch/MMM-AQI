@@ -33,8 +33,5 @@
       "no-undef": "off",
       "no-underscore-dangle": "off"
     }
-  },
-  "dependencies": {
-    "node-fetch": "^3.3.1"
   }
 }
