@@ -84,6 +84,15 @@ describe('MMM-AQI', () => {
     });
   });
 
+  describe('getTemplateData', () => {
+    it('returns information needed by template', () => {
+      MMMAQI.data.aqi = 179;
+      expect(MMMAQI.getTemplateData()).toEqual({
+        aqi: 179,
+        loading: MMMAQI.loading,
+      });
+    });
+  });
 
   describe('socketNotificationReceived', () => {
     const payload = { aqi: 179 };

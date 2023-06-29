@@ -40,6 +40,7 @@ Module.register('MMM-AQI', {
 
   getTemplateData() {
     return {
+      aqi: this.data.aqi,
       loading: this.loading,
     };
   },
