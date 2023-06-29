@@ -1,7 +1,13 @@
 {% if loading %}
   <div class="dimmed light">{{ "LOADING" | translate | safe }}</div>
 {% else %}
-  <header class="space-between">
-    <span>{{ aqi }}</span>
-  </header>
+  <h1 class="small">
+    AQI
+  </h1>
+
+  <div class="aqi-label">
+    <div class="bright regular medium">
+      {{ aqi }}
+    </div>
+  </a>
 {% endif %}

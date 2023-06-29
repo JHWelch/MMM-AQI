@@ -4,11 +4,17 @@ translate = (str) => str;
 
 describe('MMM-AQI.njk', () => {
   describe('content loaded', () => {
+    const payload = {
+      loading: false,
+      aqi: 179,
+    };
+
+    it('shows the title', () => {
+      const template = nunjucks.render('MMM-AQI.njk', payload);
+
+      expect(template).toContain('AQI');
+    });
     it('shows the AQI', () => {
-      const payload = {
-        loading: false,
-        aqi: 179,
-      };
       const template = nunjucks.render('MMM-AQI.njk', payload);
 
       expect(template).toContain('179');
