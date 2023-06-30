@@ -1,0 +1,35 @@
+.aqi-label {
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0.75rem;
+}
+
+.aqi-label--good {
+  background-color: #009966;
+  color: #fff;
+}
+
+.aqi-label--moderate {
+  background-color: #ffde33;
+  color: #000;
+}
+
+.aqi-label--sensitive {
+  background-color: #ff9933;
+  color: #000;
+}
+
+.aqi-label--unhealthy {
+  background-color: #cc0033;
+  color: #fff;
+}
+
+.aqi-label--very-unhealthy {
+  background-color: #660099;
+  color: #fff;
+}
+
+.aqi-label--hazardous {
+  background-color: #7e0023;
+  color: #fff;
+}

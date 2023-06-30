@@ -95,7 +95,7 @@ describe('MMM-AQI', () => {
       });
     });
 
-    describe('levelClass', () => {
+    describe('getLevelClass', () => {
       it('returns aqi-label--good when aqi is less than 51', () => {
         MMMAQI.data.aqi = 49;
 
@@ -130,6 +130,28 @@ describe('MMM-AQI', () => {
         MMMAQI.data.aqi = 301;
 
         expect(MMMAQI.getTemplateData().levelClass).toBe('aqi-label--hazardous');
+      });
+    });
+  });
+
+  describe('getStyles', () => {
+    describe('default', () => {
+      it('returns styles path', () => {
+        expect(MMMAQI.getStyles()).toEqual([
+          'font-awesome.css',
+          'css/MMM-AQI.css',
+        ]);
+      });
+    });
+
+    describe('config has `colorMode` set to dimmed', () => {
+      it('returns styles path', () => {
+        MMMAQI.setConfig({ colorMode: 'dimmed' });
+
+        expect(MMMAQI.getStyles()).toEqual([
+          'font-awesome.css',
+          'css/MMM-AQI-dimmed.css',
+        ]);
       });
     });
   });

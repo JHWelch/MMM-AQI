@@ -9,6 +9,7 @@
 
 Module.register('MMM-AQI', {
   defaults: {
+    colorMode: 'default',
     updateInterval: 60000,
   },
 
@@ -71,7 +72,14 @@ Module.register('MMM-AQI', {
   },
 
   getStyles() {
-    return ['font-awesome.css', 'MMM-AQI.css'];
+    const aqiCss = this.config.colorMode === 'dimmed'
+      ? 'MMM-AQI-dimmed.css'
+      : 'MMM-AQI.css';
+
+    return [
+      'font-awesome.css',
+      `css/${aqiCss}`,
+    ];
   },
 
   getTranslations() {

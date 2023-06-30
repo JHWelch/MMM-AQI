@@ -34,14 +34,24 @@ var config = {
 
 ## Configuration options
 
-| Option           | Description                                                                       |
-| ---------------- | --------------------------------------------------------------------------------- |
-| `token`          | **Required** [Free token from AQICN.org](https://aqicn.org/data-platform/token/)  |
-| `city`           | **Required** The city for which to display the information                        |
-| `updateInterval` | *Optional* Refresh time in milliseconds <br>Default 60000 milliseconds (1 minute) |
+| Option           | Required?    | Description                                                            |
+| ---------------- | ------------ | ---------------------------------------------------------------------- |
+| `token`          | **Required** | [Free token from AQICN.org](https://aqicn.org/data-platform/token/)    |
+| `city`           | **Required** | The city for which to display the information                          |
+| `colorMode`      | *Optional*   | Color mode for the AQI display <br>Default `default` (color) See       |
+| `updateInterval` | *Optional*   | Refresh time in milliseconds <br>Default 60000 milliseconds (1 minute) |
 
-## Customizing colors
-You can customize the colors of the AQI display by overriding the following classes in your custom.css file. See the [MMM-AQI.css](MMM-AQI.css) file for the default values. Make sure to set `background-color` and `color` to override the default values.
+### Colors
+
+You can update the color mode of the AQI display by setting the `colorMode` option. The following options are available:
+
+| Option    | Description                                      |
+| --------- | ------------------------------------------------ |
+| `default` | Default AQI colors. Primary green/red/yellow.    |
+| `dimmed`  | Dimmed AQI colors. Based on colors used by AQICN |
+
+#### Custom Colors
+You can fully customize the colors of the AQI display by overriding the following classes in your custom.css file. See the [MMM-AQI.css](MMM-AQI.css) file for the default values. Make sure to set `background-color` and `color` to override the default values.
 
 ```css
 .aqi-label--good { /** set background-color & color */}
