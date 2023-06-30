@@ -3,27 +3,25 @@ const mockResponse = require('../__mocks__/mockResponse');
 
 beforeAll(() => {
   require('../__mocks__/logger');
+  require('../__mocks__/node-fetch');
 });
 
 describe('node_helper', () => {
   let helper;
   let Log;
+  let fetch;
 
   beforeEach(() => {
+    jest.mock('node-fetch', () => jest.fn(() => Promise.resolve(mockResponse())));
     helper = require('../node_helper');
     Log = require('logger'); // eslint-disable-line import/no-unresolved
+    fetch = require('node-fetch'); // eslint-disable-line import/no-unresolved
 
     helper.setName('MMM-AQI');
   });
 
   describe('socketNotificationReceived', () => {
     describe('passed proper config', () => {
-      beforeEach(() => {
-        fetchMock.mockResponseOnce(mockResponse(), {
-          status: 200,
-        });
-      });
-
       it('fetches the aqi for the city', () => {
         helper.socketNotificationReceived('MMM-AQI-FETCH', {
           city: 'chicago',

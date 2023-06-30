@@ -1,5 +1,5 @@
 function mockResponse() {
-  return JSON.stringify({
+  const body = JSON.stringify({
     status: 'ok',
     data: {
       aqi: 179,
@@ -212,6 +212,13 @@ function mockResponse() {
       debug: {
         sync: '2023-06-28T10:22:27+09:00',
       },
+    },
+  });
+
+  return new Response(body, {
+    status: 200,
+    headers: {
+      'Content-type': 'application/json',
     },
   });
 }
