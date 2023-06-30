@@ -40,6 +40,23 @@ var config = {
 | `city`           | **Required** The city for which to display the information                        |
 | `updateInterval` | *Optional* Refresh time in milliseconds <br>Default 60000 milliseconds (1 minute) |
 
+## Customizing colors
+You can customize the colors of the AQI display by overriding the following classes in your custom.css file. See the [MMM-AQI.css](MMM-AQI.css) file for the default values. Make sure to set `background-color` and `color` to override the default values.
+
+```css
+.aqi-label--good { /** set background-color & color */}
+
+.aqi-label--moderate { /** set background-color & color */}
+
+.aqi-label--sensitive { /** set background-color & color */}
+
+.aqi-label--unhealthy { /** set background-color & color */}
+
+.aqi-label--very-unhealthy { /** set background-color & color */}
+
+.aqi-label--hazardous { /** set background-color & color */}
+```
+
 ## Development
 
 ### Testing
