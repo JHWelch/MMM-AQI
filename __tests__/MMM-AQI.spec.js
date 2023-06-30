@@ -139,7 +139,7 @@ describe('MMM-AQI', () => {
       it('returns styles path', () => {
         expect(MMMAQI.getStyles()).toEqual([
           'font-awesome.css',
-          'css/MMM-AQI.css',
+          'MMM-AQI.css',
         ]);
       });
     });
@@ -150,7 +150,7 @@ describe('MMM-AQI', () => {
 
         expect(MMMAQI.getStyles()).toEqual([
           'font-awesome.css',
-          'css/MMM-AQI-dimmed.css',
+          'MMM-AQI-dimmed.css',
         ]);
       });
     });

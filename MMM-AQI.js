@@ -78,7 +78,7 @@ Module.register('MMM-AQI', {
 
     return [
       'font-awesome.css',
-      `css/${aqiCss}`,
+      aqiCss,
     ];
   },
 
