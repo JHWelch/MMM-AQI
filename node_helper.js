@@ -6,8 +6,8 @@
  */
 
 const fetch = require('node-fetch');
-const Log = require('logger'); // eslint-disable-line import/no-unresolved
-const NodeHelper = require('node_helper'); // eslint-disable-line import/no-unresolved
+const Log = require('logger');
+const NodeHelper = require('node_helper');
 
 module.exports = NodeHelper.create({
   socketNotificationReceived(notification, payload) {

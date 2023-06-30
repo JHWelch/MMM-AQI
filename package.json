@@ -31,7 +31,8 @@
     },
     "rules": {
       "no-undef": "off",
-      "no-underscore-dangle": "off"
+      "no-underscore-dangle": "off",
+      "import/no-unresolved": "off"
     }
   }
 }
