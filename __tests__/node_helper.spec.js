@@ -1,6 +1,4 @@
 /* eslint-disable global-require */
-const mockResponse = require('../__mocks__/mockResponse');
-
 beforeAll(() => {
   require('../__mocks__/logger');
   require('../__mocks__/node-fetch');
@@ -12,7 +10,6 @@ describe('node_helper', () => {
   let fetch;
 
   beforeEach(() => {
-    jest.mock('node-fetch', () => jest.fn(() => Promise.resolve(mockResponse())));
     helper = require('../node_helper');
     Log = require('logger'); // eslint-disable-line import/no-unresolved
     fetch = require('node-fetch'); // eslint-disable-line import/no-unresolved

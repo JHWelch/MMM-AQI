@@ -1,5 +1,5 @@
 function mockResponse() {
-  const body = JSON.stringify({
+  const body = {
     status: 'ok',
     data: {
       aqi: 179,
@@ -213,14 +213,15 @@ function mockResponse() {
         sync: '2023-06-28T10:22:27+09:00',
       },
     },
-  });
+  };
 
-  return new Response(body, {
+  return {
+    json: async () => body,
     status: 200,
     headers: {
       'Content-type': 'application/json',
     },
-  });
+  };
 }
 
 module.exports = mockResponse;
