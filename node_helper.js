@@ -31,9 +31,7 @@ module.exports = NodeHelper.create({
 
     const { aqi } = (await response.json()).data;
 
-    this.sendSocketNotification('MMM-AQI-DATA', {
-      aqi,
-    });
+    this.sendSocketNotification('MMM-AQI-DATA', { aqi });
   },
 
   requestInit() {
@@ -43,15 +41,19 @@ module.exports = NodeHelper.create({
   },
 
   validate(payload) {
+    const required = ['token', 'city'];
+
+    return this.validateRequired(payload, required);
+  },
+
+  validateRequired(payload, required) {
     let valid = true;
-    if (!payload.city) {
-      Log.error('MMM-AQI: Missing city in config');
-      valid = false;
-    }
-    if (!payload.token) {
-      Log.error('MMM-AQI: Missing token in config');
-      valid = false;
-    }
+    required.forEach((req) => {
+      if (!payload[req]) {
+        Log.error(`MMM-AQI: Missing ${req} in config`);
+        valid = false;
+      }
+    });
 
     return valid;
   },
