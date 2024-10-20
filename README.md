@@ -10,11 +10,8 @@ In ~/MagicMirror/modules
 ```sh
 git clone https://github.com/JHWelch/MMM-AQI.git
 ```
-Install NPM dependencies
-```sh
-cd MMM-AQI
-npm install
-```
+
+No dependencies are required for usage. See below for development dependencies.
 
 ## Using the module
 
@@ -68,6 +65,14 @@ You can fully customize the colors of the AQI display by overriding the followin
 ```
 
 ## Development
+
+### Install
+
+Install dev dependencies
+
+```sh
+npm run install
+```
 
 ### Testing
 
