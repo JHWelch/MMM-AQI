@@ -17,7 +17,7 @@ Module.register('MMM-AQI', {
 
   loading: true,
 
-  start() {
+  start () {
     Log.info(`Starting module: ${this.name}`);
     const self = this;
 
@@ -28,18 +28,18 @@ Module.register('MMM-AQI', {
     }, this.config.updateInterval);
   },
 
-  getData() {
+  getData () {
     this.sendSocketNotification('MMM-AQI-FETCH', {
       token: this.config.token,
       city: this.config.city,
     });
   },
 
-  getTemplate() {
+  getTemplate () {
     return 'templates/MMM-AQI.njk';
   },
 
-  getTemplateData() {
+  getTemplateData () {
     return {
       aqi: this.data.aqi,
       loading: this.loading,
@@ -47,7 +47,7 @@ Module.register('MMM-AQI', {
     };
   },
 
-  getLevelClass() {
+  getLevelClass () {
     if (this.data.aqi <= 50) {
       return 'aqi-label--good';
     }
@@ -67,11 +67,11 @@ Module.register('MMM-AQI', {
     return 'aqi-label--hazardous';
   },
 
-  getScripts() {
+  getScripts () {
     return [];
   },
 
-  getStyles() {
+  getStyles () {
     const aqiCss = this.config.colorMode === 'dimmed'
       ? 'MMM-AQI-dimmed.css'
       : 'MMM-AQI.css';
@@ -82,14 +82,14 @@ Module.register('MMM-AQI', {
     ];
   },
 
-  getTranslations() {
+  getTranslations () {
     return {
       en: 'translations/en.json',
       es: 'translations/es.json',
     };
   },
 
-  socketNotificationReceived(notification, payload) {
+  socketNotificationReceived (notification, payload) {
     if (notification !== 'MMM-AQI-DATA') {
       return;
     }

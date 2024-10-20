@@ -10,7 +10,7 @@ const Log = require('logger');
 const NodeHelper = require('node_helper');
 
 module.exports = NodeHelper.create({
-  socketNotificationReceived(notification, payload) {
+  socketNotificationReceived (notification, payload) {
     if (notification !== 'MMM-AQI-FETCH') {
       return;
     }
@@ -23,7 +23,7 @@ module.exports = NodeHelper.create({
     this.getData(token, city);
   },
 
-  async getData(token, city) {
+  async getData (token, city) {
     const response = await fetch(
       `https://api.waqi.info/feed/${city}/?token=${token}`,
       this.requestInit(),
@@ -34,19 +34,19 @@ module.exports = NodeHelper.create({
     this.sendSocketNotification('MMM-AQI-DATA', { aqi });
   },
 
-  requestInit() {
+  requestInit () {
     return {
       headers: { Accept: 'application/json' },
     };
   },
 
-  validate(payload) {
+  validate (payload) {
     const required = ['token', 'city'];
 
     return this.validateRequired(payload, required);
   },
 
-  validateRequired(payload, required) {
+  validateRequired (payload, required) {
     let valid = true;
     required.forEach((req) => {
       if (!payload[req]) {
