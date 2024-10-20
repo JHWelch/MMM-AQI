@@ -1,5 +1,5 @@
 function mockResponse () {
-  const body = {
+  return {
     status: 'ok',
     data: {
       aqi: 179,
@@ -212,14 +212,6 @@ function mockResponse () {
       debug: {
         sync: '2023-06-28T10:22:27+09:00',
       },
-    },
-  };
-
-  return {
-    json: async () => body,
-    status: 200,
-    headers: {
-      'Content-type': 'application/json',
     },
   };
 }
