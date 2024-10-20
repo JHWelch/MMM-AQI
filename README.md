@@ -2,6 +2,8 @@
 
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
 
+![Screenshot of the application in use showing all 5 category colors.](/images/screenshot.png?raw=true "Screenshot")
+
 Simple display of AQI information from [World Air Quality Index project](https://aqicn.org/api/). This module will require a [free api key from AQICN](https://aqicn.org/data-platform/token/)
 
 ## Installation
