@@ -2,6 +2,8 @@
 
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
 
+![Screenshot of the application in use showing all 5 category colors.](/images/screenshot.png?raw=true "Screenshot")
+
 Simple display of AQI information from [World Air Quality Index project](https://aqicn.org/api/). This module will require a [free api key from AQICN](https://aqicn.org/data-platform/token/)
 
 ## Installation
@@ -10,11 +12,8 @@ In ~/MagicMirror/modules
 ```sh
 git clone https://github.com/JHWelch/MMM-AQI.git
 ```
-Install NPM dependencies
-```sh
-cd MMM-AQI
-npm install
-```
+
+No dependencies are required for usage. See below for development dependencies.
 
 ## Using the module
 
@@ -68,6 +67,14 @@ You can fully customize the colors of the AQI display by overriding the followin
 ```
 
 ## Development
+
+### Install
+
+Install dev dependencies
+
+```sh
+npm run install
+```
 
 ### Testing
 
