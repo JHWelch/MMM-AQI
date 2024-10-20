@@ -11,8 +11,8 @@ describe('node_helper', () => {
 
   beforeEach(() => {
     helper = require('../node_helper');
-    Log = require('logger'); // eslint-disable-line import/no-unresolved
-    fetch = require('node-fetch'); // eslint-disable-line import/no-unresolved
+    Log = require('logger');
+    fetch = require('node-fetch');
 
     helper.setName('MMM-AQI');
   });

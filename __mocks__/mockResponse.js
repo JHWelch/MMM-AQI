@@ -1,4 +1,4 @@
-function mockResponse() {
+function mockResponse () {
   const body = {
     status: 'ok',
     data: {
