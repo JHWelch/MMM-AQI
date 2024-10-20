@@ -5,7 +5,6 @@
  * MIT Licensed.
  */
 
-const fetch = require('node-fetch');
 const Log = require('logger');
 const NodeHelper = require('node_helper');
 
@@ -20,7 +19,7 @@ module.exports = NodeHelper.create({
 
     const { token, city } = payload;
 
-    this.getData(token, city);
+    return this.getData(token, city);
   },
 
   async getData (token, city) {

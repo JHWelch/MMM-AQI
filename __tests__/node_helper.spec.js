@@ -1,33 +1,43 @@
+const { default: fetchMock } = require('fetch-mock');
+const mockResponse = require('./fixtures/mockResponse');
+
 /* eslint-disable global-require */
 beforeAll(() => {
   require('../__mocks__/logger');
-  require('../__mocks__/node-fetch');
 });
 
 describe('node_helper', () => {
   let helper;
   let Log;
-  let fetch;
 
   beforeEach(() => {
     helper = require('../node_helper');
     Log = require('logger');
-    fetch = require('node-fetch');
 
     helper.setName('MMM-AQI');
   });
 
   describe('socketNotificationReceived', () => {
     describe('passed proper config', () => {
+      beforeEach(() => {
+        fetchMock.mock('https://api.waqi.info/feed/chicago/?token=mock-token', {
+          status: 200,
+          body: mockResponse(),
+        });
+      });
+
+      afterEach(() => {
+        fetchMock.restore();
+      });
+
       it('fetches the aqi for the city', () => {
         helper.socketNotificationReceived('MMM-AQI-FETCH', {
           city: 'chicago',
           token: 'mock-token',
         });
 
-        expect(fetch).toHaveBeenCalledWith(
+        expect(fetchMock.calls()[0][0]).toBe(
           'https://api.waqi.info/feed/chicago/?token=mock-token',
-          { headers: { Accept: 'application/json' } },
         );
       });
 
@@ -37,10 +47,10 @@ describe('node_helper', () => {
           token: 'mock-token',
         });
 
-        // expect(helper.sendSocketNotification)
-        //   .toHaveBeenCalledWith('MMM-AQI-DATA', {
-        //     aqi: 179,
-        //   });
+        expect(helper.sendSocketNotification)
+          .toHaveBeenCalledWith('MMM-AQI-DATA', {
+            aqi: 179,
+          });
       });
     });
 

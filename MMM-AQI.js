@@ -13,7 +13,7 @@ Module.register('MMM-AQI', {
     updateInterval: 60000,
   },
 
-  requiresVersion: '2.2.0',
+  requiresVersion: '2.28.0',
 
   loading: true,
 
