@@ -18,7 +18,7 @@ describe('MMM-AQI', () => {
   });
 
   it('requires expected version', () => {
-    expect(MMMAQI.requiresVersion).toBe('2.2.0');
+    expect(MMMAQI.requiresVersion).toBe('2.28.0');
   });
 
   describe('defaults', () => {
