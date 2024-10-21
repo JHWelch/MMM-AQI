@@ -1,10 +1,6 @@
 const { default: fetchMock } = require('fetch-mock');
 const mockResponse = require('./fixtures/mockResponse');
-
-/* eslint-disable global-require */
-beforeAll(() => {
-  require('../__mocks__/logger');
-});
+require('../__mocks__/logger');
 
 describe('node_helper', () => {
   let helper;
