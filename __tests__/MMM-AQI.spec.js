@@ -1,10 +1,7 @@
-/* eslint-disable global-require */
-describe('MMM-AQI', () => {
-  beforeAll(() => {
-    require('../__mocks__/Module');
-    require('../__mocks__/globalLogger');
-  });
+require('../__mocks__/Module');
+require('../__mocks__/globalLogger');
 
+describe('MMM-AQI', () => {
   const name = 'MMM-AQI';
 
   let MMMAQI;
