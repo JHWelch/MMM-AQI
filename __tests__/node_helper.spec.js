@@ -1,4 +1,5 @@
-const { default: fetchMock } = require('fetch-mock');
+const fetchMock = require('@fetch-mock/jest').default;
+const { manageFetchMockGlobally } = require('@fetch-mock/jest');
 const mockResponse = require('./fixtures/mockResponse');
 require('../__mocks__/logger');
 
@@ -7,6 +8,7 @@ describe('node_helper', () => {
   let Log;
 
   beforeEach(() => {
+    manageFetchMockGlobally(jest);
     helper = require('../node_helper');
     Log = require('logger');
 
@@ -16,23 +18,23 @@ describe('node_helper', () => {
   describe('socketNotificationReceived', () => {
     describe('passed proper config', () => {
       beforeEach(() => {
-        fetchMock.mock('https://api.waqi.info/feed/chicago/?token=mock-token', {
+        fetchMock.mockGlobal().get('https://api.waqi.info/feed/chicago/?token=mock-token', {
           status: 200,
           body: mockResponse(),
         });
       });
 
       afterEach(() => {
-        fetchMock.restore();
+        fetchMock.mockReset();
       });
 
-      it('fetches the aqi for the city', () => {
-        helper.socketNotificationReceived('MMM-AQI-FETCH', {
+      it('fetches the aqi for the city', async () => {
+        await helper.socketNotificationReceived('MMM-AQI-FETCH', {
           city: 'chicago',
           token: 'mock-token',
         });
 
-        expect(fetchMock.calls()[0][0]).toBe(
+        expect(fetchMock.callHistory.callLogs[0].args[0]).toBe(
           'https://api.waqi.info/feed/chicago/?token=mock-token',
         );
       });
