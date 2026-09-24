@@ -19,15 +19,11 @@ No dependencies are required for usage. See below for development dependencies.
 
 To use this module, add the following configuration block to the modules array in the `config/config.js` file:
 ```js
-var config = {
-    modules: [
-        {
-            module: 'MMM-AQI',
-            config: {
-                // See below for configurable options
-            }
-        }
-    ]
+{
+    module: 'MMM-AQI',
+    config: {
+        // See below for configurable options
+    }
 }
 ```
 
@@ -85,7 +81,7 @@ In `~/MagicMirror/modules/MMM-AQI`
 
 ```sh
 git pull
-npm install --omit=dev
+```
 
 ## Development
 
