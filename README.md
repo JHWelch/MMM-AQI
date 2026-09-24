@@ -50,6 +50,7 @@ You can update the color mode of the AQI display by setting the `colorMode` opti
 | `dimmed`  | Dimmed AQI colors. Based on colors used by AQICN |
 
 #### Custom Colors
+
 You can fully customize the colors of the AQI display by overriding the following classes in your custom.css file. See the [MMM-AQI.css](MMM-AQI.css) file for the default values. Make sure to set `background-color` and `color` to override the default values.
 
 ```css
@@ -65,6 +66,26 @@ You can fully customize the colors of the AQI display by overriding the followin
 
 .aqi-label--hazardous { /** set background-color & color */}
 ```
+
+## Update
+
+### Automatic Update
+
+Did you know MagicMirror² has a built-in module updater? Read more about it [here](https://docs.magicmirror.builders/modules/updatenotification.html#updates-array).
+
+Add the following to your `updates` array of `updatenotification` in `config/config.js`
+
+```js
+{ 'MMM-AQI': 'git pull' },
+```
+
+### Manual Update
+
+In `~/MagicMirror/modules/MMM-AQI`
+
+```sh
+git pull
+npm install --omit=dev
 
 ## Development
 
